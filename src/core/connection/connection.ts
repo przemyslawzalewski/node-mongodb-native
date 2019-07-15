@@ -6,6 +6,7 @@ import { Response } from './commands';
 import { BinMsg } from './msg';
 import { MongoError, MongoNetworkError } from '../error';
 import { Buffer as SafeBuffer } from 'safe-buffer';
+import { ConnectionInterface } from '../../../interfaces/connection';
 
 const OP_COMPRESSED = opcodes.OP_COMPRESSED;
 const OP_MSG = opcodes.OP_MSG;
@@ -73,7 +74,7 @@ type DestroyCallback = (err: Error|null, result: null) => any;
  * @fires Connection#parseError
  * @fires Connection#message
  */
-class Connection extends EventEmitter {
+export class Connection extends EventEmitter implements ConnectionInterface {
   id: number;
   logger: any; // TS-TODO
   bson: BSON;
