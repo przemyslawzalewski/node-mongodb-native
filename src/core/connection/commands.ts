@@ -6,6 +6,8 @@ import { BSON, Long as LongType } from 'bson';
 // Wire command operation ids
 import { opcodes } from '../wireprotocol/shared';
 
+import { MsgHeader, ResponseOptions, ParseOptions } from '../../../interfaces/message_response';
+
 const Long = retrieveBSON().Long;
 
 // Incrementing request id
@@ -451,28 +453,6 @@ export class KillCursor {
     // Return buffer
     return _buffer;
   };
-}
-
-type ResponseOptions = {
-  promoteLongs?: boolean;
-  promoteValues?: boolean;
-  promoteBuffers?: boolean;
-}
-
-type MsgHeader = {
-  length: number;
-  requestId: number;
-  responseTo: number;
-  opCode: number;
-  fromCompressed: boolean;
-}
-
-type ParseOptions = {
-  raw?: boolean;
-  documentsReturnedIn?: string;
-  promoteLongs?: boolean;
-  promoteValues?: boolean;
-  promoteBuffers?: boolean;
 }
 
 export class Response {

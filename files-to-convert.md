@@ -22,7 +22,6 @@ lib/core/connection/command_result.js
 lib/core/connection/connect.js
 lib/core/connection/connection.js
 lib/core/connection/logger.js
-lib/core/connection/msg.js
 lib/core/connection/pool.js
 lib/core/cursor.js
 lib/core/index.js
