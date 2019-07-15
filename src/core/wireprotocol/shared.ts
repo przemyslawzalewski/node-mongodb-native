@@ -1,6 +1,8 @@
 import { ReadPreference } from '../topologies/read_preference';
 import { MongoError } from '../error';
 
+import { MsgHeader } from '../../../interfaces/message_response';
+
 // TS-TODO resolve imports
 const ServerType = require('../sdam/server_description').ServerType;
 const TopologyDescription = require('../sdam/topology_description').TopologyDescription;
@@ -45,7 +47,7 @@ export function getReadPreference(
 };
 
 // Parses the header of a wire protocol message
-export function parseHeader(message: Buffer) {
+export function parseHeader(message: Buffer): MsgHeader {
   return {
     length: message.readInt32LE(0),
     requestId: message.readInt32LE(4),
