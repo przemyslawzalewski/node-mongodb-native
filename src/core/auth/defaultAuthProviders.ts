@@ -18,7 +18,7 @@ const SSPI: typeof AuthProvider = require('./sspi');
  * @param {BSON} bson Bson definition
  * @returns {Object} a mapping of auth names to auth types
  */
-function defaultAuthProviders(bson: BSON) {
+export function defaultAuthProviders(bson: BSON) {
   return {
     mongocr: new MongoCR(bson),
     x509: new X509(bson),
