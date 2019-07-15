@@ -51,7 +51,6 @@ lib/core/wireprotocol/get_more.js
 lib/core/wireprotocol/index.js
 lib/core/wireprotocol/kill_cursors.js
 lib/core/wireprotocol/query.js
-lib/core/wireprotocol/shared.js
 lib/core/wireprotocol/write_command.js
 lib/cursor.js
 lib/db.js
