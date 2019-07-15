@@ -16,7 +16,7 @@ const Binary = BSON.Binary;
  *
  * @extends AuthProvider
  */
-class Plain extends AuthProvider {
+export class Plain extends AuthProvider {
   /**
    * Implementation of authentication for a single connection
    * @override

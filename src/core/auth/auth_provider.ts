@@ -1,6 +1,6 @@
 'use strict';
 
-import {BSON} from 'bson';
+import { BSON } from 'bson';
 import { MongoError } from '../error';
 import { MongoCredentials } from './mongo_credentials';
 import { ConnectionInterface } from '../../../interfaces/connection';

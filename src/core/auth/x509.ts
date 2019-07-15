@@ -11,7 +11,7 @@ import { DriverCallback } from '../../../interfaces/driver_callback';
  * @class
  * @extends AuthProvider
  */
-class X509 extends AuthProvider {
+export class X509 extends AuthProvider {
   /**
    * Implementation of authentication for a single connection
    * @override

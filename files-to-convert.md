@@ -9,7 +9,6 @@ lib/change_stream.js
 lib/collection.js
 lib/command_cursor.js
 lib/constants.js
-lib/core/auth/defaultAuthProviders.js
 lib/core/auth/gssapi.js
 lib/core/auth/sspi.js
 lib/core/connection/apm.js
