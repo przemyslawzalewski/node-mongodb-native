@@ -12,7 +12,6 @@ lib/constants.js
 lib/core/auth/auth_provider.js
 lib/core/auth/defaultAuthProviders.js
 lib/core/auth/gssapi.js
-lib/core/auth/mongo_credentials.js
 lib/core/auth/mongocr.js
 lib/core/auth/plain.js
 lib/core/auth/scram.js
