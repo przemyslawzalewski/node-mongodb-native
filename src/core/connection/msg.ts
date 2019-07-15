@@ -49,7 +49,7 @@ type MsgOptions = {
   moreToCome?: boolean;
 }
 
-class Msg {
+export class Msg {
   options: MsgOptions;
   requestId: number;
   serializeFunctions: boolean;
@@ -157,7 +157,7 @@ class Msg {
   }
 }
 
-class BinMsg {
+export class BinMsg {
   parsed: boolean;
   raw: Buffer;
   data: Buffer;
