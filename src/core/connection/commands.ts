@@ -465,7 +465,7 @@ export class Response {
   requestId: number;
   responseTo: number;
   opCode: number;
-  fromCompressed: boolean;
+  fromCompressed?: boolean;
 
   // BodyFields
   responseFlags: number;

@@ -166,7 +166,7 @@ export class BinMsg {
   requestId: number;
   responseTo: number;
   opCode: number;
-  fromCompressed: boolean;
+  fromCompressed?: boolean;
 
   responseFlags: number;
   checksumPresent: boolean;
