@@ -11,7 +11,6 @@ lib/command_cursor.js
 lib/constants.js
 lib/core/auth/gssapi.js
 lib/core/auth/sspi.js
-lib/core/connection/apm.js
 lib/core/connection/connect.js
 lib/core/connection/logger.js
 lib/core/connection/pool.js
