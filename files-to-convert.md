@@ -19,7 +19,6 @@ lib/core/auth/sspi.js
 lib/core/auth/x509.js
 lib/core/connection/apm.js
 lib/core/connection/command_result.js
-lib/core/connection/commands.js
 lib/core/connection/connect.js
 lib/core/connection/connection.js
 lib/core/connection/logger.js
