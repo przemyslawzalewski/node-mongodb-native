@@ -13,7 +13,6 @@ lib/core/auth/defaultAuthProviders.js
 lib/core/auth/gssapi.js
 lib/core/auth/scram.js
 lib/core/auth/sspi.js
-lib/core/auth/x509.js
 lib/core/connection/apm.js
 lib/core/connection/connect.js
 lib/core/connection/logger.js
