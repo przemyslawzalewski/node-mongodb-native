@@ -11,7 +11,6 @@ lib/command_cursor.js
 lib/constants.js
 lib/core/auth/defaultAuthProviders.js
 lib/core/auth/gssapi.js
-lib/core/auth/mongocr.js
 lib/core/auth/plain.js
 lib/core/auth/scram.js
 lib/core/auth/sspi.js
