@@ -24,11 +24,15 @@
     "bson-ext": "^2.0.0"
   },
   "dependencies": {
+    "@types/bson": "^4.0.0",
     "bson": "^1.1.1",
     "require_optional": "^1.0.1",
     "safe-buffer": "^5.1.2"
   },
   "devDependencies": {
+    "@types/node": "^12.6.2",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
     "bluebird": "3.5.0",
     "chai": "^4.1.1",
     "chai-subset": "^1.6.0",
@@ -49,6 +53,7 @@
     "sinon-chai": "^3.2.0",
     "snappy": "^6.1.2",
     "standard-version": "^4.4.0",
+    "typescript": "^3.5.3",
     "worker-farm": "^1.5.0",
     "wtfnode": "^0.8.0"
   },
@@ -60,11 +65,13 @@
     "url": "https://github.com/mongodb/node-mongodb-native/issues"
   },
   "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
     "atlas": "node ./test/atlas_connectivity_tests.js",
     "test": "npm run lint && mongodb-test-runner -t 60000 test/core test/unit test/functional",
     "coverage": "istanbul cover mongodb-test-runner -- -t 60000 test/core test/unit test/functional",
-    "lint": "eslint lib test",
-    "format": "prettier --print-width 100 --tab-width 2 --single-quote --write 'test/**/*.js' 'lib/**/*.js'",
+    "lint": "eslint src test",
+    "format": "prettier --print-width 100 --tab-width 2 --single-quote --write 'test/**/*.js' 'src/**/*.ts'",
     "bench": "node test/driverBench/",
     "generate-evergreen": "node .evergreen/generate_evergreen_tasks.js",
     "release": "standard-version -i HISTORY.md"
