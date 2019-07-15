@@ -58,7 +58,7 @@ export class MongoError extends Error {
  * @property {string} stack The error call stack
  */
 export class MongoNetworkError extends MongoError {
-  constructor(message: ConstructorParameters<typeof MongoError>) {
+  constructor(message: ConstructorParameters<typeof MongoError>[0]) {
     super(message);
     this.name = 'MongoNetworkError';
 
@@ -74,7 +74,7 @@ export class MongoNetworkError extends MongoError {
  * @property {string} message The error message
  */
 export class MongoParseError extends MongoError {
-  constructor(message: ConstructorParameters<typeof MongoError>) {
+  constructor(message: ConstructorParameters<typeof MongoError>[0]) {
     super(message);
     this.name = 'MongoParseError';
   }
@@ -87,7 +87,7 @@ export class MongoParseError extends MongoError {
  * @property {string} message The error message
  */
 export class MongoTimeoutError extends MongoError {
-  constructor(message: ConstructorParameters<typeof MongoError>) {
+  constructor(message: ConstructorParameters<typeof MongoError>[0]) {
     super(message);
     this.name = 'MongoTimeoutError';
   }
@@ -119,7 +119,7 @@ function makeWriteConcernResultObject(input: any) {
 export class MongoWriteConcernError extends MongoError {
   result?: ReturnType<typeof makeWriteConcernResultObject>;
   constructor(
-    message: ConstructorParameters<typeof MongoError>,
+    message: ConstructorParameters<typeof MongoError>[0],
     result?: ReturnType<typeof makeWriteConcernResultObject>
   ) {
     super(message);
