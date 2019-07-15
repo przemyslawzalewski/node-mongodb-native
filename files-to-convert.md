@@ -34,7 +34,6 @@ lib/core/transactions.js
 lib/core/uri_parser.js
 lib/core/wireprotocol/command.js
 lib/core/wireprotocol/compression.js
-lib/core/wireprotocol/constants.js
 lib/core/wireprotocol/get_more.js
 lib/core/wireprotocol/index.js
 lib/core/wireprotocol/kill_cursors.js
