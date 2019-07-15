@@ -5,6 +5,7 @@ import { AuthProvider } from './auth_provider';
 import { MongoCredentials } from './mongo_credentials';
 import { ConnectionInterface } from '../../../interfaces/connection';
 import { RunCommandOnConnection } from '../../../interfaces/run_command_on_connection';
+import { DriverCallback } from '../../../interfaces/driver_callback';
 
 /**
  * Creates a new MongoCR authentication mechanism
@@ -20,7 +21,7 @@ export class MongoCR extends AuthProvider {
     sendAuthCommand: RunCommandOnConnection,
     connection: ConnectionInterface, 
     credentials: MongoCredentials,
-    callback: (err: Error|null|undefined, result: any) => void
+    callback: DriverCallback
   ) {
     const username = credentials.username;
     const password = credentials.password;

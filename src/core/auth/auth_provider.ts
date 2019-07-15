@@ -5,8 +5,7 @@ import { MongoError } from '../error';
 import { MongoCredentials } from './mongo_credentials';
 import { ConnectionInterface } from '../../../interfaces/connection';
 import { RunCommandOnConnection } from '../../../interfaces/run_command_on_connection';
-
-type authCallback = (err: Error|null|void, result: any) => void
+import { DriverCallback } from '../../../interfaces/driver_callback';
 
 /**
  * Creates a new AuthProvider, which dictates how to authenticate for a given
@@ -33,7 +32,7 @@ export class AuthProvider {
     sendAuthCommand: RunCommandOnConnection,
     connections: ConnectionInterface[],
     credentials: MongoCredentials,
-    callback: authCallback
+    callback: DriverCallback
   ) {
     // Total connections
     let count = connections.length;
@@ -98,7 +97,7 @@ export class AuthProvider {
     sendAuthCommand: RunCommandOnConnection, 
     connection: ConnectionInterface,
     credentials: MongoCredentials,
-    callback: authCallback
+    callback: DriverCallback
   ) {
     throw new Error('_authenticateSingleConnection must be overridden');
   }
@@ -122,7 +121,7 @@ export class AuthProvider {
    * @param {Connection[]} connections Connections to authenticate using this authenticator
    * @param {authResultCallback} callback The callback to return the result from the authentication
    */
-  reauthenticate(sendAuthCommand: RunCommandOnConnection, connections: ConnectionInterface[], callback: authCallback) {
+  reauthenticate(sendAuthCommand: RunCommandOnConnection, connections: ConnectionInterface[], callback: DriverCallback) {
     const authStore = this.authStore.slice(0);
     let count = authStore.length;
     if (count === 0) {

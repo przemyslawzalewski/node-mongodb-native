@@ -5,6 +5,7 @@ import { AuthProvider } from './auth_provider';
 import { RunCommandOnConnection } from '../../../interfaces/run_command_on_connection';
 import { ConnectionInterface } from '../../../interfaces/connection';
 import { MongoCredentials } from './mongo_credentials';
+import { DriverCallback } from '../../../interfaces/driver_callback';
 
 // TODO: can we get the Binary type from this.bson instead?
 const BSON = retrieveBSON();
@@ -24,7 +25,7 @@ class Plain extends AuthProvider {
     sendAuthCommand: RunCommandOnConnection,
     connection: ConnectionInterface, 
     credentials: MongoCredentials,
-    callback: (err: Error|null|undefined, result: any) => void
+    callback: DriverCallback
   ) {
     const username = credentials.username;
     const password = credentials.password;

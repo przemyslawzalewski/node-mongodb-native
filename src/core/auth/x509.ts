@@ -4,6 +4,7 @@ import { RunCommandOnConnection } from "../../../interfaces/run_command_on_conne
 import { ConnectionInterface } from "../../../interfaces/connection";
 import { MongoCredentials } from "./mongo_credentials";
 import { AuthProvider } from "./auth_provider";
+import { DriverCallback } from '../../../interfaces/driver_callback';
 
 /**
  * Creates a new X509 authentication mechanism
@@ -19,7 +20,7 @@ class X509 extends AuthProvider {
     sendAuthCommand: RunCommandOnConnection,
     connection: ConnectionInterface, 
     credentials: MongoCredentials,
-    callback: (err: Error|null|undefined, result: any) => void
+    callback: DriverCallback
   ) {
     const username = credentials.username;
     const command: any = { authenticate: 1, mechanism: 'MONGODB-X509' };
