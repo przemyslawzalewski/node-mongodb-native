@@ -18,6 +18,7 @@ const Logger = require('./logger');
 // types
 import { Socket } from 'net';
 import { BSON } from 'bson';
+import { DriverCallback } from '../../../interfaces/driver_callback';
 
 let _id = 0;
 
@@ -62,7 +63,26 @@ export interface SocketOptions {
   promoteBuffers?: boolean;
 }
 
-type DestroyCallback = (err: Error|null, result: null) => any;
+export interface WorkQueueItem {
+  cb: DriverCallback;
+  requestId?: number;
+  started?: ReturnType<typeof process.hrtime>;
+  buffer?: Buffer;
+
+  // options
+  noResponse: boolean;
+  promoteLongs: boolean;
+  promoteValues: boolean;
+  promoteBuffers: boolean;
+  raw: boolean;
+  immediateRelease: boolean;
+  documentsReturnedIn?: string;
+  command: boolean;
+  fullResult: boolean;
+  session?: unknown;
+  socketTimeout?: number;
+  monitoring?: boolean;
+}
 
 /**
  * A class representing a single connection to a MongoDB server
@@ -98,7 +118,7 @@ export class Connection extends EventEmitter implements ConnectionInterface {
   writeStream: unknown; // TS-TODO
   destroyed: boolean;
   hashedName: string;
-  workItems: unknown[];
+  workItems: WorkQueueItem[];
 
   // Parsing types
   bytesRead: number = 0;
@@ -254,10 +274,10 @@ export class Connection extends EventEmitter implements ConnectionInterface {
    * Destroy connection
    * @method
    */
-  destroy(options: { force?: boolean }, callback: DestroyCallback) : void;
-  destroy(callback: DestroyCallback) : void;
+  destroy(options: { force?: boolean }, callback: DriverCallback<null>) : void;
+  destroy(callback: DriverCallback<null>) : void;
   destroy() : void;
-  destroy(options?: { force?: boolean }|DestroyCallback, callback?: DestroyCallback) {
+  destroy(options?: { force?: boolean }|DriverCallback<null>, callback?: DriverCallback<null>) {
     if (typeof options === 'function') {
       callback = options;
       options = {};

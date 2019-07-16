@@ -180,6 +180,9 @@ export class BinMsg {
 
   index = 0;
 
+  // TS-TODO
+  hashedName?: string;
+
   constructor(
     public bson: BSON,
     message: Buffer,

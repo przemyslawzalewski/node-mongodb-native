@@ -486,6 +486,9 @@ export class Response {
 
   index: number = 0;
 
+  // TS-TODO
+  hashedName?: string;
+
   constructor(
     public bson: BSON,
     message: Buffer,

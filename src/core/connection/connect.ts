@@ -1,7 +1,7 @@
 'use strict';
 
 import { createConnection, Socket, SocketConnectOpts } from 'net';
-import { connect as tlsConnect, TLSSocket, ConnectionOptions as TLSConnectOps, CipherNameAndProtocol, TlsOptions } from 'tls';
+import { connect as tlsConnect, TLSSocket, ConnectionOptions as TLSConnectOps, CipherNameAndProtocol, TlsOptions, checkServerIdentity } from 'tls';
 import { Connection, SocketOptions } from './connection';
 import { Query } from './commands';
 import { MongoError, MongoNetworkError } from '../error';
@@ -61,7 +61,7 @@ type ConnectOptions = Pick<TLSConnectOps, ValidTLSSocketOptions>  & {
   socketTimeout?: number;
   noDelay?: boolean;
   credentials?: MongoCredentials;
-  checkServerIdentity?: boolean;
+  checkServerIdentity?: boolean | typeof checkServerIdentity;
 
   // Investigate these
   dbName?: string;
