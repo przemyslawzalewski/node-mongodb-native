@@ -50,7 +50,7 @@ export interface SocketOptions {
   host: string;
   port: number;
   bson: BSON;
-  tag: unknown;
+  tag?: unknown;
   keepAlive?: boolean;
   keepAliveInitialDelay?: number;
   connectionTimeout?: number;
@@ -78,7 +78,7 @@ export class Connection extends EventEmitter implements ConnectionInterface {
   id: number;
   logger: any; // TS-TODO
   bson: BSON;
-  tag: unknown; // TS-TODO
+  tag?: unknown; // TS-TODO
   host: string;
   port: number;
   keepAlive: boolean;
@@ -287,7 +287,7 @@ export class Connection extends EventEmitter implements ConnectionInterface {
    * @method
    * @param {Command} command Command to write out need to implement toBin and toBinUnified
    */
-  write(buffer: Buffer) {
+  write(buffer: Buffer|Buffer[]) {
     // Debug Log
     if (this.logger.isDebug()) {
       if (!Array.isArray(buffer)) {
