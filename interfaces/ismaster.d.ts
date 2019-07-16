@@ -16,7 +16,7 @@ export interface CommandResponseCommon {
 }
 
 
-export interface IsMasterCommon extends CommandResponseCommon {
+export interface IsMaster extends CommandResponseCommon {
   ismaster: boolean;
   maxBsonObjectSize: number;
   maxMessageSizeBytes: number;
@@ -28,25 +28,23 @@ export interface IsMasterCommon extends CommandResponseCommon {
   readOnly?: boolean;
   compression?: string[];
   saslSupportedMechs?: string[];
-}
 
-export interface IsMasterMongos {
-  msg: 'isdbgrid';
-}
+  // Mongos Fields
+  msg?: 'isdbgrid';
 
-export interface IsMasterReplicaSet {
-  setName: string;
-  setVersion: number;
-  secondary: boolean;
-  hosts: string[];
-  passives: string[];
-  arbiters: string[];
-  primary: string;
-  arbiterOnly: boolean;
-  passive: boolean;
-  hidden: boolean;
+  // ReplicaSet Fields
+  setName?: string;
+  setVersion?: number;
+  secondary?: boolean;
+  hosts?: string[];
+  passives?: string[];
+  arbiters?: string[];
+  primary?: string;
+  arbiterOnly?: boolean;
+  passive?: boolean;
+  hidden?: boolean;
   tags?: Record<string,string>;
-  me: string;
+  me?: string;
   // TS-TODO
   electionId?: unknown;
   lastWrite?: {
@@ -56,5 +54,3 @@ export interface IsMasterReplicaSet {
     majorityWriteDate: Date;
   }
 }
-
-export type IsMaster = IsMasterCommon & (IsMasterMongos | IsMasterReplicaSet);

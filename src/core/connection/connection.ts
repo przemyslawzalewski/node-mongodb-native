@@ -106,6 +106,12 @@ export class Connection extends EventEmitter implements ConnectionInterface {
   buffer: Buffer|null|undefined;
   stubBuffer: Buffer|null|undefined;
 
+  // Tacked on Metadata from connect fn. This should be handled better
+  agreedCompressor?: string;
+  zlibCompressionLevel?: unknown;
+  ismaster?: any;
+  lastIsMasterMS?: any;
+
   /**
    * Creates a new Connection instance
    *
