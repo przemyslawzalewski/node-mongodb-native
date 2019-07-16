@@ -181,7 +181,7 @@ class ScramSHA extends AuthProvider {
     };
 
     // Write the commmand on the connection
-    sendAuthCommand(connection, `${db}.$cmd`, saslStartCmd, (err, r) => {
+    sendAuthCommand(connection, `${db}.$cmd`, saslStartCmd, (err: any, r: any) => {
       let tmpError = ScramSHA._getError(err, r);
       if (tmpError) {
         return callback(tmpError, null);
@@ -204,7 +204,7 @@ class ScramSHA extends AuthProvider {
 
       if (iterations && iterations < 4096) {
         const error = new MongoError(`Server returned an invalid iteration count ${iterations}`);
-        return callback(error, false);
+        return callback(error, false as any);
       }
 
       const clientKey = HMAC(cryptoMethod, saltedPassword, 'Client Key');
@@ -220,7 +220,7 @@ class ScramSHA extends AuthProvider {
         payload: new Binary(SafeBuffer.from(clientFinal) as unknown as Buffer)
       };
 
-      sendAuthCommand(connection, `${db}.$cmd`, saslContinueCmd, ((err, r) => {
+      sendAuthCommand(connection, `${db}.$cmd`, saslContinueCmd, ((err: Error|null|undefined, r: any) => {
         if (!r || r.done !== false) {
           return callback(err, r);
         }
@@ -232,7 +232,7 @@ class ScramSHA extends AuthProvider {
         };
 
         sendAuthCommand(connection, `${db}.$cmd`, retrySaslContinueCmd, callback);
-      }) as DriverCallback);
+      }));
     });
   }
 

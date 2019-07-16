@@ -1,3 +1,3 @@
-export interface DriverCallback {
-  (err: Error|null|undefined, result?: any): void;
+export interface DriverCallback<T=any> {
+  (err: Error|null|undefined, result?: null|T): void;
 }

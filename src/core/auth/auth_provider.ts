@@ -47,7 +47,7 @@ export class AuthProvider {
     let errorObject: Error|null = null;
 
     const execute = (connection: ConnectionInterface) => {
-      this._authenticateSingleConnection(sendAuthCommand, connection, credentials, (err, r) => {
+      this._authenticateSingleConnection(sendAuthCommand, connection, credentials, (err: Error|null|undefined, r: any) => {
         // Adjust count
         count = count - 1;
 
@@ -75,7 +75,7 @@ export class AuthProvider {
           if (errorObject == null) {
             errorObject = new MongoError(`failed to authenticate using ${credentials.mechanism}`);
           }
-          callback(errorObject, false);
+          callback(errorObject, false as any);
         }
       });
     };
@@ -129,7 +129,7 @@ export class AuthProvider {
     }
 
     for (let i = 0; i < authStore.length; i++) {
-      this.auth(sendAuthCommand, connections, authStore[i], function(err) {
+      this.auth(sendAuthCommand, connections, authStore[i], function(err: any) {
         count = count - 1;
         if (count === 0) {
           callback(err, null);

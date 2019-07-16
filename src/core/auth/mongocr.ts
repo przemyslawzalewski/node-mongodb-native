@@ -27,7 +27,7 @@ export class MongoCR extends AuthProvider {
     const password = credentials.password;
     const source = credentials.source;
 
-    sendAuthCommand(connection, `${source}.$cmd`, { getnonce: 1 }, (err, r) => {
+    sendAuthCommand(connection, `${source}.$cmd`, { getnonce: 1 }, (err: Error|null|undefined, r: any) => {
       let nonce = null;
       let key = null;
 
