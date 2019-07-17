@@ -23,9 +23,9 @@ connect.ReadPreference = require('mongodb-core').ReadPreference;
 connect.GridStore = require('./lib/gridfs/grid_store');
 connect.Chunk = require('./lib/gridfs/chunk');
 connect.Logger = core.Logger;
+connect.Cursor = require('./lib/cursor');
 connect.AggregationCursor = require('./lib/aggregation_cursor');
 connect.CommandCursor = require('./lib/command_cursor');
-connect.Cursor = require('./lib/cursor');
 connect.GridFSBucket = require('./lib/gridfs-stream');
 // Exported to be used in tests not to be used anywhere else
 connect.CoreServer = require('mongodb-core').Server;
